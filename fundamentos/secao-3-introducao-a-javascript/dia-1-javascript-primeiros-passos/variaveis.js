@@ -1,11 +1,11 @@
-const myName = 'Claus'
+const myName = "Claus";
 
-console.log(myName)
+console.log(myName);
 
-const birthCity = 'Porto Alegre'
+const birthCity = "Porto Alegre";
 
-console.log(birthCity)
+console.log(birthCity);
 
-const birthYear = 1981
+const birthYear = 1981;
 
-console.log(birthYear)
+console.log(birthYear);
