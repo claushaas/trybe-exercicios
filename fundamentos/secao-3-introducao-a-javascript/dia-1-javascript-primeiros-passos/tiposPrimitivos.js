@@ -1,11 +1,11 @@
-let base = 5
+let base = 5;
 
-let height = 8
+let height = 8;
 
-let area = base * height
+let area = base * height;
 
-console.log(area)
+console.log(area);
 
-const perimeter = (base * 2) + (height * 2)
+const perimeter = base * 2 + height * 2;
 
-console.log(perimeter)
+console.log(perimeter);
