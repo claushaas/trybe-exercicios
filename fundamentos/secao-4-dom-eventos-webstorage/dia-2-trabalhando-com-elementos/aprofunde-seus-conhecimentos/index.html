@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Exercício</title>
+    <style>
+      section {
+        border-color: black;
+        border-style: solid;
+      }
+
+      .title {
+        text-align: center;
+      }
+
+      .main-content {
+        background-color: yellow;
+      }
+
+      .main-content .center-content {
+        background-color: red;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .main-content .center-content p {
+        font-style: italic;
+      }
+
+      .main-content .left-content {
+        background-color: green;
+        width: 60%;
+        margin-left: 0;
+        margin-right: auto;
+      }
+
+      .main-content .left-content .small-image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 100%;
+      }
+
+      .main-content .right-content {
+        background-color: blue;
+        width: 60%;
+        margin-left: auto;
+        margin-right: 0;
+      }
+
+      .main-content .description {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // 1. Adicione a tag h1 com o texto TrybeTrip - Agência de Viagens como filho da tag body;
+
+      const title = document.createElement("h1");
+      title.innerText = "TrybeTrip - Agência de Viagens";
+      const body = document.body;
+      body.appendChild(title);
+
+      // 2. Adicione a tag main com a classe main-content como filho da tag body;
+
+      const main = document.createElement("main");
+      main.classList = "main-content";
+      body.appendChild(main);
+
+      // 3. Adicione a tag section com a classe center-content como filho da tag main criada no passo 2;
+
+      const section1 = document.createElement("section");
+      section1.classList = "center-content";
+      main.appendChild(section1);
+
+      // 4. Adicione a tag p como filho do section criado no passo 3 e coloque algum texto;
+
+      const algumTexto = document.createElement("p");
+      algumTexto.innerText = "Algum Texto Aqui";
+      section1.appendChild(algumTexto);
+
+      // 5. Adicione a tag section com a classe left-content como filho da tag main criada no passo 2;
+
+      const section2 = document.createElement("section");
+      section2.classList = "left-content";
+      main.appendChild(section2);
+
+      // 6. Adicione a tag section com a classe right-content como filho da tag main criada no passo 2;
+
+      const section3 = document.createElement("section");
+      section3.classList = "right-content";
+      main.appendChild(section3);
+
+      // 7. Adicione uma imagem com src configurado para valor https://picsum.photos/200 e classe small-image. Esse elemento deve ser filho do section criado no passo 5;
+
+      const img = document.createElement("img");
+      img.src = "https://picsum.photos/200";
+      img.classList = "small-image";
+      section2.appendChild(img);
+
+      // 8. Adicione uma lista não ordenada com os valores de 1 a 10 por extenso, ou seja, um, dois, três, e assim por diante. Essa lista deve ser filha do section criado no passo 6;
+
+      const list = document.createElement('ul')
+      section3.appendChild(list)
+
+      String.prototype.extenso = function (c) { // método extenso() copiado do stackoverflow - https://pt.stackoverflow.com/questions/5945/como-transformar-dígitos-numéricos-em-números-por-extenso
+        var ex = [
+          [
+            "zero",
+            "um",
+            "dois",
+            "três",
+            "quatro",
+            "cinco",
+            "seis",
+            "sete",
+            "oito",
+            "nove",
+            "dez",
+            "onze",
+            "doze",
+            "treze",
+            "quatorze",
+            "quinze",
+            "dezesseis",
+            "dezessete",
+            "dezoito",
+            "dezenove",
+          ],
+          [
+            "dez",
+            "vinte",
+            "trinta",
+            "quarenta",
+            "cinqüenta",
+            "sessenta",
+            "setenta",
+            "oitenta",
+            "noventa",
+          ],
+          [
+            "cem",
+            "cento",
+            "duzentos",
+            "trezentos",
+            "quatrocentos",
+            "quinhentos",
+            "seiscentos",
+            "setecentos",
+            "oitocentos",
+            "novecentos",
+          ],
+          [
+            "mil",
+            "milhão",
+            "bilhão",
+            "trilhão",
+            "quadrilhão",
+            "quintilhão",
+            "sextilhão",
+            "setilhão",
+            "octilhão",
+            "nonilhão",
+            "decilhão",
+            "undecilhão",
+            "dodecilhão",
+            "tredecilhão",
+            "quatrodecilhão",
+            "quindecilhão",
+            "sedecilhão",
+            "septendecilhão",
+            "octencilhão",
+            "nonencilhão",
+          ],
+        ];
+        var a,
+          n,
+          v,
+          i,
+          n = this.replace(c ? /[^,\d]/g : /\D/g, "").split(","),
+          e = " e ",
+          $ = "real",
+          d = "centavo",
+          sl;
+        for (
+          var f = n.length - 1, l, j = -1, r = [], s = [], t = "";
+          ++j <= f;
+          s = []
+        ) {
+          j && (n[j] = (("." + n[j]) * 1).toFixed(2).slice(2));
+          if (
+            !((a = (v = n[j]).slice((l = v.length) % 3).match(/\d{3}/g)),
+            (v = l % 3 ? [v.slice(0, l % 3)] : []),
+            (v = a ? v.concat(a) : v)).length
+          )
+            continue;
+          for (a = -1, l = v.length; ++a < l; t = "") {
+            if (!(i = v[a] * 1)) continue;
+            (i % 100 < 20 && (t += ex[0][i % 100])) ||
+              ((i % 100) + 1 &&
+                (t +=
+                  ex[1][(((i % 100) / 10) >> 0) - 1] +
+                  (i % 10 ? e + ex[0][i % 10] : "")));
+            s.push(
+              (i < 100
+                ? t
+                : !(i % 100)
+                ? ex[2][i == 100 ? 0 : (i / 100) >> 0]
+                : ex[2][(i / 100) >> 0] + e + t) +
+                ((t = l - a - 2) > -1
+                  ? " " +
+                    (i > 1 && t > 0 ? ex[3][t].replace("ão", "ões") : ex[3][t])
+                  : "")
+            );
+          }
+          a =
+            (sl = s.length) > 1
+              ? ((a = s.pop()), s.join(" ") + e + a)
+              : s.join("") ||
+                ((!j && n[j + 1] * 1 > 0) || r.length ? "" : ex[0][0]);
+          a &&
+            r.push(
+              a +
+                (c
+                  ? " " +
+                    (v.join("") * 1 > 1
+                      ? j
+                        ? d + "s"
+                        : (/0{6,}$/.test(n[0]) ? "de " : "") +
+                          $.replace("l", "is")
+                      : j
+                      ? d
+                      : $)
+                  : "")
+            );
+        }
+        return r.join(e);
+      };
+      
+      for (let number = 1; number <= 10; number += 1) {
+        const num = document.createElement('li')
+        num.innerText = number.toString().extenso()
+        list.appendChild(num)
+      }
+
+      // 9. Adicione 3 tags h3, todas filhas do main criado no passo 2.
+
+      for (let index = 1; index <= 3; index += 1) {
+        const h3 = document.createElement('h3')
+        main.appendChild(h3)
+      }
+
+      // Requisitos bônus
+
+      // Adicione a classe title na tag h1 criada;
+
+      title.classList = 'title';
+
+      // Adicione a classe description nas 3 tags h3 criadas;
+
+      const h3s = document.getElementsByTagName('h3')
+
+      for (let h3 of h3s) {
+        h3.classList = 'description'
+      }
+
+      // Remova a section criada no passo 5 (aquela que possui a classe left-content) por meio da função .removeChild();
+
+      section2.parentElement.removeChild(section2)
+
+      // Centralize a section criada no passo 6 (aquela que possui a classe right-content).
+
+      section3.style.margin = '0 auto'
+
+      // Troque a cor de fundo do elemento-pai da section criada no passo 3 (aquela que possui a classe center-content) para a cor verde;
+
+      section1.parentElement.style.backgroundColor = 'green'
+
+      // Remova os dois últimos elementos (nove e dez) da lista criada no passo 8.
+
+      const lis = document.getElementsByTagName('li')
+
+      for (let index = 9; index >= 8; index -= 1) {
+        console.log(lis)
+        list.removeChild(lis[index])
+      }
+    
+    </script>
+  </body>
+</html>
