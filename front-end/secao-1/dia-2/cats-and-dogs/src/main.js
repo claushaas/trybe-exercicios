@@ -10,7 +10,6 @@ const fetchDog = () => {
   fetch('https://dog.ceo/api/breeds/image/random')
     .then(response => response.json())
     .then(data => {
-      console.log(data)
       img.src = data.message
     })
 }
@@ -18,9 +17,8 @@ const fetchDog = () => {
 const fetchCat = () => {
   fetch('https://api.thecatapi.com/v1/images/search')
     .then(response => response.json())
-    .then(data => {
-      console.log(data)
-      img.src = data[0].url
+    .then(([data]) => {
+      img.src = data.url
     })
 }
 
@@ -39,12 +37,7 @@ surpriseButton.addEventListener('click', () => {
   ])
     .then(response => response.json())
     .then(data => {
-      console.log(data);
-      if (Array.isArray(data)) {
-        img.src = data[0].url
-      } else {
-        img.src = data.message
-      }
+      img.src = data[0].url || data.message
     })
 })
 
