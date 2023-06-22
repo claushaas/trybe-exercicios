@@ -17,8 +17,8 @@ const fetchDog = () => {
 const fetchCat = () => {
   fetch('https://api.thecatapi.com/v1/images/search')
     .then(response => response.json())
-    .then(([data]) => {
-      img.src = data.url
+    .then(data => {
+      img.src = data[0].url
     })
 }
 
@@ -37,7 +37,11 @@ surpriseButton.addEventListener('click', () => {
   ])
     .then(response => response.json())
     .then(data => {
-      img.src = data[0].url || data.message
+      if (Array.isArray(data)) {
+        img.src = data[0].url
+      } else {
+        img.src = data.message
+      }
     })
 })
 
