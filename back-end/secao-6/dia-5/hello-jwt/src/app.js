@@ -20,6 +20,12 @@ app.use(
 
 app.get('/ping', controllers.ping);
 
+app.post('/login', controllers.login);
+
+app.get('/users/me', middlewares.auth, controllers.users.findMe);
+
+app.get('/top-secret', middlewares.auth, controllers.topSecret);
+
 app.use(middlewares.error);
 
 module.exports = app;
